@@ -18,6 +18,7 @@
     "url": "git@github.com:resin-io/etcher.git"
   },
   "scripts": {
+    "mcu": "cd ../mcu && npm run build && cd ../etcher && rm -rf bots && rm -rf server && cp -r ../mcu/bots bots && cp -r ../mcu/server server",
     "test": "make test",
     "start": "electron lib/start.js",
     "postshrinkwrap": "node ./scripts/clean-shrinkwrap.js",
