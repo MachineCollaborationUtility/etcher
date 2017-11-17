@@ -1,5 +1,5 @@
 # MCU assets
-.sqlite
+*.sqlite
 bots
 server
 
