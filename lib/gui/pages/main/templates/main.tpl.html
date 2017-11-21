@@ -1,6 +1,6 @@
 <div class="page-main row around-xs">
   <div class="col-xs" ng-controller="ImageSelectionController as image">
-    <div class="box text-center relative" os-dropzone="image.selectImageByPath($file)">
+    <div class="box text-center relative">
 
       <div class="center-block">
         <svg-icon path="main.selection.getImageLogo() || '../assets/image.svg'"></svg-icon>
@@ -11,13 +11,7 @@
           <button
             class="button button-primary button-brick"
             tabindex="{{ main.selection.hasImage() ? -1 : 1 }}"
-            ng-click="image.checkForNewImage(true)">Get latest image</button>
-
-          <p class="step-footer">
-            {{ ::image.mainSupportedExtensions.join(', ') }}, and
-            <span class="step-footer-underline"
-              uib-tooltip="{{ image.extraSupportedExtensions.join(', ') }}">others</span>
-          </p>
+            ng-click="image.checkForNewImage(true)">{{image.isDownloading() ? 'Downloading...' : 'Get latest image'}}</button>
         </div>
         <div ng-if="main.selection.hasImage()">
           <div class="step-selection-text">
@@ -32,7 +26,7 @@
           <button class="button button-link step-footer"
             tabindex="1"
             ng-click="image.checkForNewImage(true)"
-            ng-hide="main.state.isFlashing()">Check for new image.</button>
+            ng-hide="main.state.isFlashing() || !image.updateAvailable()">{{image.downloadPrompt()}}</button>
         </div>
       </div>
     </div>
