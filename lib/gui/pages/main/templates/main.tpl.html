@@ -11,7 +11,7 @@
           <button
             class="button button-primary button-brick"
             tabindex="{{ main.selection.hasImage() ? -1 : 1 }}"
-            ng-click="image.openImageSelector()">Select image</button>
+            ng-click="image.checkForNewImage(true)">Get latest image</button>
 
           <p class="step-footer">
             {{ ::image.mainSupportedExtensions.join(', ') }}, and
@@ -31,8 +31,8 @@
 
           <button class="button button-link step-footer"
             tabindex="1"
-            ng-click="image.reselectImage()"
-            ng-hide="main.state.isFlashing()">Change</button>
+            ng-click="image.checkForNewImage(true)"
+            ng-hide="main.state.isFlashing()">Check for new image.</button>
         </div>
       </div>
     </div>
